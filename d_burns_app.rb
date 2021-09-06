@@ -13,7 +13,7 @@ get "/home" do
 end
 
 get "/depression/new" do
-  [200, "\n\n\n\n nothing here yet"]
+  erb :depression
 end
 
 get "/anxiety/new" do

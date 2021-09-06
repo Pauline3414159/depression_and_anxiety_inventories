@@ -41,3 +41,9 @@ screens needed
 
 helper programs
 - given a list of questions and a list responses, a program will output the appropriate html I can use
+
+currently - 
+- working on getting a depression form
+  - how do I get the menu to stop covering up stuff?
+  - need helper program
+  - 
