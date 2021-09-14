@@ -50,3 +50,6 @@ currently -
       -given an array of questions, and a list of possible answers, output the form
         -how to get erb and gem bootstrap to work together?
         -will read ebb doc
+   got helper program working
+   -need to get the instructions in the header of the depression stuff
+   -do the other two surveyes

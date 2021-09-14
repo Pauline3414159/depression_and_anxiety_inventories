@@ -2,6 +2,7 @@ require 'sinatra'
 require 'tilt'
 require 'erubis'
 require 'sinatra/reloader'
+require 'pry'
 
 get "/" do
   redirect "/home"
@@ -24,8 +25,9 @@ post "anxiety/new" do
   "nothing here yet"
 end
 
-post "depression/new" do
-  
+post "/depression/new" do
+  @score = params.values.sum
+  redirect "/home"
 end
 
 get "/depression/reports" do
