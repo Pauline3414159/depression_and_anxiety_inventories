@@ -44,6 +44,9 @@ helper programs
 
 currently - 
 - working on getting a depression form
-  - how do I get the menu to stop covering up stuff?
-  - need helper program
-  - 
+  - how do I get the menu to stop covering up stuff? (bootstrap sets all fixed navbars to block, changed it to a right burger 
+  - ended up playing with the forms a lot to get it to work
+  - need helper program < --
+      -given an array of questions, and a list of possible answers, output the form
+        -how to get erb and gem bootstrap to work together?
+        -will read ebb doc
