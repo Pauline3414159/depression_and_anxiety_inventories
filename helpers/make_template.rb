@@ -39,6 +39,4 @@ HTML
 
 questions = ['are you pauline', 'are you kaz']
 pauline = ERB.new(templater)
-
-
-puts pauline.result
+File.write('questions.html', pauline.result)
