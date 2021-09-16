@@ -18,11 +18,12 @@ get "/depression/new" do
 end
 
 get "/anxiety/new" do
-  [200, "\n\n\n\n nothing here yet"]
+  erb :anxiety
 end
 
-post "anxiety/new" do
-  "nothing here yet"
+post "/anxiety/new" do
+  @score = params.values.map(&:to_i).sum
+  redirect "/home"
 end
 
 post "/depression/new" do
