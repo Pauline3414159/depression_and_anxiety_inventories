@@ -26,7 +26,7 @@ post "anxiety/new" do
 end
 
 post "/depression/new" do
-  @score = params.values.sum
+  @score = params.values.map(&:to_i).sum
   redirect "/home"
 end
 

@@ -1,4 +1,4 @@
-user will be able to
+cduser will be able to
   - choose from a list of three surveys
   - go to fill out a new survey
   - see a list of scores and dates of survey
