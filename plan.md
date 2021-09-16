@@ -53,3 +53,7 @@ currently -
    got helper program working
    -need to get the instructions in the header of the depression stuff
    -do the other two surveyes
+- added the favicon
+- set up database
+- make test database
+- set up class and method for dealing with database using pgem
