@@ -20,6 +20,13 @@ class PgInterface
     scores
   end
 
+  def add_depression_score(user_id, score)
+    sql = <<~SQL
+      INSERT INTO depressions (user_id, score) VALUES ($1, $2);
+    SQL
+    @connection.exec_params(sql, [user_id, score])
+  end
+
   def close
     @connection.close
   end

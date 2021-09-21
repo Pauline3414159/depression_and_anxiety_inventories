@@ -46,7 +46,9 @@ post "/anxiety/new" do
 end
 
 post "/depression/new" do
+  @user_id = 1
   @score = params.values.map(&:to_i).sum
+  @connect.add_depression_score(@user_id, @score)
   redirect "/home"
 end
 
