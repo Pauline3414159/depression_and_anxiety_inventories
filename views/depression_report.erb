@@ -1,0 +1,26 @@
+<main>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Score</th>
+        <th scope="col">Severity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @scores.each_pair do |date, score| %>
+        <tr>
+          <td>
+            <%= date %>
+          </td>
+          <td>
+            <%= score%>
+          </td>
+          <td>
+            <%= interpert_depression(score)%>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</main>

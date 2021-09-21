@@ -19,4 +19,8 @@ class PgInterface
     end
     scores
   end
+
+  def close
+    @connection.close
+  end
 end
