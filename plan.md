@@ -43,17 +43,4 @@ helper programs
 - given a list of questions and a list responses, a program will output the appropriate html I can use
 
 currently - 
-- working on getting a depression form
-  - how do I get the menu to stop covering up stuff? (bootstrap sets all fixed navbars to block, changed it to a right burger 
-  - ended up playing with the forms a lot to get it to work
-  - need helper program < --
-      -given an array of questions, and a list of possible answers, output the form
-        -how to get erb and gem bootstrap to work together?
-        -will read ebb doc
-   got helper program working
-   -need to get the instructions in the header of the depression stuff
-   -do the other two surveyes
-- added the favicon
-- set up database
-- make test database
-- set up class and method for dealing with database using pgem
+- anxiety methods for pginterface
