@@ -14,11 +14,9 @@ class PgInterface
       WHERE $1 = users.id
       ORDER BY date DESC;
     SQL
-    scores = {}
     @connection.exec_params(sql, [user_id]) do |result|
-      result.each { |tuple| scores[tuple['date']] = tuple['score'] }
+      result.each_with_object({}) { |tuple, scores| scores[tuple['date']] = tuple['score'] }
     end
-    scores
   end
 
   def anxieties_scores(user_id)
@@ -28,11 +26,9 @@ class PgInterface
       WHERE $1 = users.id
       ORDER BY date DESC;
     SQL
-    scores = {}
     @connection.exec_params(sql, [user_id]) do |result|
-      result.each { |tuple| scores[tuple['date']] = tuple['score'] }
+      result.each_with_object({}) { |tuple, scores| scores[tuple['date']] = tuple['score'] }
     end
-    scores
   end
 
   def add_depression_score(user_id, score)
