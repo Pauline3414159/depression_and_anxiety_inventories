@@ -17,6 +17,19 @@ helpers do
     else "Something went wrong."
     end
   end
+
+  def interpert_anxiety(score)
+    score = score.to_i
+    case 
+    when (0..4).include?(score) then "No Anxiety"
+    when (5..10).include?(score) then "Boderline Anxiety"
+    when (11..20).include?(score) then "Mild Anxiety"
+    when (21..30).include?(score) then "Moderate Anxiety"
+    when (31..50).include?(score) then "Severe Anxiety"
+    when (51 .. 99).include?(score) then "Extreme Anxiety"
+    else "Something went wrong."
+    end
+  end
 end
 
 before do
@@ -41,7 +54,9 @@ get "/anxiety/new" do
 end
 
 post "/anxiety/new" do
+  @user_id = 1
   @score = params.values.map(&:to_i).sum
+  @connect.add_anxiety_score(@user_id, @score)
   redirect "/home"
 end
 
@@ -58,8 +73,10 @@ get "/depression/reports" do
   erb :depression_report
 end
 
-get "depressions/reports" do
-  
+get "/anxiety/reports" do
+  @user_id = 1
+  @scores = @connect.anxieties_scores(@user_id)
+  erb :anxiety_report
 end
 
 after do
