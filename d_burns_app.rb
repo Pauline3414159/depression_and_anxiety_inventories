@@ -35,6 +35,9 @@ end
 before do
   @connect = PgInterface.new
 end
+get '/signup' do
+  erb :sign_up
+end
 
 get '/' do
   redirect '/home'
