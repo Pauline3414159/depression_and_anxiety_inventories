@@ -6,6 +6,16 @@ class PgInterface
     @connection = PG::Connection.new(dbname: 'burns')
   end
 
+  def add_user(email, password)
+    sql = <<~SQL
+    INSERT INTO users (username, password)
+    VALUES ($1,$2);
+    SQL
+    @connection.exec_params(sql, [email, password]) do |result|
+      puts result.error_message
+    end
+  end
+
   # returns a hash with the key as the date, and the value as the score (in string form)
   def depression_scores(user_id)
     sql = <<~SQL
