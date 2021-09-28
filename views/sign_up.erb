@@ -1,15 +1,31 @@
-<form action="#" method="post" class="container">
-  <div class="row">
-    <div class="mb-3">
-      <label for="user_name" class="col-form-label">User Name</label>
-      <input type="text"  id="user_name"  class="col-form-control" placeholder="User Name">
+<form action="/signup" method="post">
+  <div class="d-grid gap-3 p-3">
+
+    <div class="row">
+      <div class="col-2 col-form-label">
+        <label for="email" class="form-label">Email</label>
+      </div>
+      <div class="col-6">
+        <input type="email" class="form-control" name="email" id="email">
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="password" class="col-form-label">password</label>
-      <input type="password" name="password" id="password"  class="col-form-control">
+
+    <div class=" row">
+      <div class="col-2 col-form-label">
+        <label for="password" class="form-label">Password</label>
+      </div>
+      <div class="col-6">
+        <input type="password" class="form-control" name="password" id="password">
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-sm mx-auto">
+          <button type="submit" class="btn btn-primary ms-1">Submit</button>
+          <button type="reset" class="btn btn-primary ms-1">Reset</button>
+        </div>
+      </div>
+
     </div>
-  </div>
-  <div class="row">
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
 </form>
