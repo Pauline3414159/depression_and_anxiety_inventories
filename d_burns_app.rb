@@ -32,16 +32,29 @@ helpers do
   end
 end
 
+enable :sessions
+
 before do
   @connect = PgInterface.new
+  @message = session.delete('msg')
 end
+
 get '/signup' do
   erb :sign_up
 end
 
-post 'signup' do
+post '/signup' do
+  @user_mail = params['email']
+  @password = params['password']
+  @connect.add_user(@user_mail, @password)
+  if @connect.message
+    session['msg'] = @connect.message.dup
+    @connect.message = nil
+    redirect '/signup'
+  else
+    redirect '/home'
+  end
   
-  redirect '/home'
 end
 
 get '/' do

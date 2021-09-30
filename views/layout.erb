@@ -46,6 +46,11 @@
         </div>
       </div>
     </nav>
+    <% if @message %>
+      <div class="alert alert-danger" role="alert">
+        <%= @message %>
+      </div>
+    <% end %>
     <%= yield %>
     <!-- Optional JavaScript; choose one of the two! -->
 
