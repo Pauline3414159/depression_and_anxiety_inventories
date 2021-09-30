@@ -8,6 +8,19 @@ class PgInterface
 
   attr_accessor :message
 
+  def sign_in(email, password)
+    sql = <<~SQL
+    SELECT id FROM users WHERE username=$1 AND password = $2;
+    SQL
+    @connection.exec_params(sql, [email, password]) do |result|
+      if result.ntuple == 1
+        @user_id_num = result[0]['id']
+      else
+        @message = 'Invalid email or password'
+      end
+    end
+  end
+
   def add_user(email, password)
     sql = <<~SQL
     INSERT INTO users (username, password)

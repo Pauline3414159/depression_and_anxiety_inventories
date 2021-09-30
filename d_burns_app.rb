@@ -43,6 +43,10 @@ get '/signup' do
   erb :sign_up
 end
 
+get '/signin' do
+  erb :sign_in
+end
+
 post '/signup' do
   @user_mail = params['email']
   @password = params['password']

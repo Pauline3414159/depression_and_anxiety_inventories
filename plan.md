@@ -43,4 +43,4 @@ helper programs
 - given a list of questions and a list responses, a program will output the appropriate html I can use
 
 currently - 
-- working on making a sign up page - just the html - need to put the form in a bootstrap grid
+- working on signing in, trying to save userid in session, and give error message if not
