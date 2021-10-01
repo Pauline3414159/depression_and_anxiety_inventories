@@ -4,21 +4,24 @@ require 'pg'
 class PgInterface
   def initialize
     @connection = PG::Connection.new(dbname: 'burns')
+    @user_id_num = nil
   end
 
   attr_accessor :message
+  attr_reader :user_id_num
 
   def sign_in(email, password)
     sql = <<~SQL
     SELECT id FROM users WHERE username=$1 AND password = $2;
     SQL
     @connection.exec_params(sql, [email, password]) do |result|
-      if result.ntuple == 1
+      if result.ntuples == 1
         @user_id_num = result[0]['id']
       else
         @message = 'Invalid email or password'
       end
     end
+    @user_id_num
   end
 
   def add_user(email, password)

@@ -37,6 +37,8 @@ enable :sessions
 before do
   @connect = PgInterface.new
   @message = session.delete('msg')
+  @user_id_num = session['user_id_num']
+  @username = session['username']
 end
 
 get '/signup' do
@@ -45,6 +47,19 @@ end
 
 get '/signin' do
   erb :sign_in
+end
+
+post '/signin' do
+  @connect.sign_in(params['email'], params['password'])
+  if !!@connect.user_id_num
+    session['user_id_num'] = @connect.user_id_num
+    session['username'] = params['email']
+    redirect '/home'
+  else
+    @message = @connect.message
+    @connect.message = nil
+    redirect '/signin'
+  end
 end
 
 post '/signup' do
@@ -79,28 +94,27 @@ get '/anxiety/new' do
 end
 
 post '/anxiety/new' do
-  @user_id = 1
+  
   @score = params.values.map(&:to_i).sum
-  @connect.add_anxiety_score(@user_id, @score)
+  @connect.add_anxiety_score(@user_id_num, @score)
   redirect '/home'
 end
 
 post '/depression/new' do
-  @user_id = 1
+  
   @score = params.values.map(&:to_i).sum
-  @connect.add_depression_score(@user_id, @score)
+  @connect.add_depression_score(@user_id_num, @score)
   redirect '/home'
 end
 
 get '/depression/reports' do
-  @user_id = 1
-  @scores = @connect.depression_scores(@user_id)
+  
+  @scores = @connect.depression_scores(@user_id_num)
   erb :depression_report
 end
 
 get '/anxiety/reports' do
-  @user_id = 1
-  @scores = @connect.anxieties_scores(@user_id)
+  @scores = @connect.anxieties_scores(@user_id_num)
   erb :anxiety_report
 end
 
