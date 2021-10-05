@@ -1,4 +1,5 @@
 require 'pg'
+require 'bcrypt'
 
 # allows a connection with the posgresql database
 class PgInterface
