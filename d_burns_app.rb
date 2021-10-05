@@ -31,8 +31,11 @@ helpers do
     end
   end
 end
+configure do
+  enable :sessions
+  set :session_secret, "e5a44ff4292412d123b548648b"
+end
 
-enable :sessions
 
 before do
   @connect = PgInterface.new
