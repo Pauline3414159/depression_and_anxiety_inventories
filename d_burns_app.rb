@@ -119,6 +119,9 @@ end
 post '/depression/new' do
   
   @score = params.values.map(&:to_i).sum
+  if params["Do you have a plan for harming yoursel"] != '0' || params["Would you like to end your life?"] != '0' || params["Do you have any suicidal thoughts?"] != '0'
+    session['msg'] = " Contact <a href=\"https://suicidepreventionlifeline.org/\" target=\"_blank\"> the suicide prevention lifeline for help! </a>" 
+  end
   @connect.add_depression_score(@user_id_num, @score)
   redirect '/home'
 end
