@@ -89,7 +89,6 @@ post '/signup' do
   else
     redirect '/home'
   end
-  
 end
 
 get '/' do
@@ -110,24 +109,24 @@ get '/anxiety/new' do
 end
 
 post '/anxiety/new' do
-  
   @score = params.values.map(&:to_i).sum
   @connect.add_anxiety_score(@user_id_num, @score)
   redirect '/home'
 end
 
 post '/depression/new' do
-  
   @score = params.values.map(&:to_i).sum
-  if params["Do you have a plan for harming yoursel"] != '0' || params["Would you like to end your life?"] != '0' || params["Do you have any suicidal thoughts?"] != '0'
-    session['msg'] = " Contact <a href=\"https://suicidepreventionlifeline.org/\" target=\"_blank\"> the suicide prevention lifeline for help! </a>" 
+  if params['Do you have a plan for harming yoursel'] != '0' ||
+     params['Would you like to end your life?'] != '0' ||
+     params['Do you have any suicidal thoughts?'] != '0'
+    session['msg'] =
+      'Contact <a href="https://suicidepreventionlifeline.org/" target="_blank"> the suicide prevention lifeline for help! </a>'
   end
   @connect.add_depression_score(@user_id_num, @score)
   redirect '/home'
 end
 
 get '/depression/reports' do
-  
   @scores = @connect.depression_scores(@user_id_num)
   erb :depression_report
 end
