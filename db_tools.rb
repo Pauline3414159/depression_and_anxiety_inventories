@@ -17,8 +17,6 @@ class PgInterface
     @connection.exec_params(sql, [email, password]) do |result|
       if result.ntuples == 1
         @user_id_num = result[0]['id']
-      else
-        @message = 'Invalid email or password'
       end
     end
     @user_id_num
@@ -73,6 +71,13 @@ class PgInterface
       INSERT INTO anxieties  (user_id, score) VALUES ($1, $2);
     SQL
     @connection.exec_params(sql, [user_id, score])
+  end
+
+  def delete_user(user_id)
+    sql = <<~SQL
+      DELETE FROM users WHERE id = $1;
+    SQL
+    @connection.exec_params(sql, [user_id])
   end
 
   def close

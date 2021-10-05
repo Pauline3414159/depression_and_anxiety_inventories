@@ -49,6 +49,17 @@ get '/signin' do
   erb :sign_in
 end
 
+get '/delete/account' do
+  erb :confirm_delete
+end
+
+post '/delete/account' do
+  @connect.delete_user(@user_id_num)
+  session.delete('user_id_num')
+  session.delete('username')
+  redirect '/home'
+end
+
 post '/signin' do
   @connect.sign_in(params['email'], params['password'])
   if !!@connect.user_id_num
@@ -56,8 +67,7 @@ post '/signin' do
     session['username'] = params['email']
     redirect '/home'
   else
-    @message = @connect.message
-    @connect.message = nil
+    session['msg'] = 'Invalid Email or Password'
     redirect '/signin'
   end
 end
