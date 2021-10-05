@@ -62,6 +62,12 @@ post '/signin' do
   end
 end
 
+get '/signout' do
+  session.delete('user_id_num')
+  session.delete('username')
+  redirect '/home'
+end
+
 post '/signup' do
   @user_mail = params['email']
   @password = params['password']

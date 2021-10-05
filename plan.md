@@ -43,4 +43,4 @@ helper programs
 - given a list of questions and a list responses, a program will output the appropriate html I can use
 
 currently - 
-- working on signing in, trying to save userid in session, and give error message if not
+-- get sign out to work

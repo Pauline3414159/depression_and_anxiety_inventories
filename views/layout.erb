@@ -19,35 +19,40 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a class="navbar-brand" href="/home">Mental Health</a>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSurvey" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                New Survey
-              </a>
+            <%if @username %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSurvey" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  New Survey
+                </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/depression/new">Depression</a></li>
                 <li><a class="dropdown-item" href="/anxiety/new">Anxiety</a></li>
               </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownResults" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownResults" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 View Results
-              </a>
+                </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/depression/reports">Depression</a></li>
                 <li><a class="dropdown-item" href="/anxiety/reports">Anxiety</a></li>
               </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/signin">Sign In</a>
-            </li>
-            <%if @username %>
               <li class="nav-item">
                 <p class="nav-link"> Welcome <%= @username %> </p>
               </li>
+              <li class="nav-tem"><a class="nav-link" href="/signout">Sign Out</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Delete Account</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="/signin">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign Up</a>
+              </li>
             <%end%>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Delete Account</a>
-            </li>
+            
             
           </ul>
           
