@@ -13,17 +13,19 @@ class PgInterface
 
   def sign_in(email, password)
     sql = <<~SQL
-    SELECT id FROM users WHERE username=$1 AND password = $2;
+    SELECT id, password FROM users WHERE username=$1;
     SQL
-    @connection.exec_params(sql, [email, password]) do |result|
-      if result.ntuples == 1
-        @user_id_num = result[0]['id']
+    @connection.exec_params(sql, [email]) do |result|
+      if result.ntuples == 1 
+        pw_hash = result[0]['password']
+        dehashed = BCrypt::Password.new(pw_hash)
+        @user_id_num = result[0]['id'] if dehashed == password 
       end
     end
-    @user_id_num
   end
 
   def add_user(email, password)
+    password = BCrypt::Password.create(password)
     sql = <<~SQL
     INSERT INTO users (username, password)
     VALUES ($1,$2);
