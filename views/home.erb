@@ -1,8 +1,13 @@
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Welcome to the home page.</p>
-<p>Once you create an account, you can measure the serverity of your depression or anxiety</p>
-<p>You can also see reports of your previous scores</p>
-<p> If you wish, you can delete your data and account by clicking delete account on the toolbar</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 m-3">
+      <% if @username %>
+        <p> Measure your <a href="/anxiety/new">anxiety</a> or <a href="/depression/new"> depression</a></p>
+        <p> Or get a report on your <a href="/anxiety/reports">anxity</a> or <a href="/depression/reports">depression</a> scores.</p>
+        <p> To remove your data, click <a href="/delete/account">here </a></p>
+      <% else %>
+        <p> <a href="/signin">Sign in</a> or <a href="/signup"> sign up</a> to track the severity of anxiety or depression</p>
+      <% end %>
+    </div>
+  </div>
+</div>
