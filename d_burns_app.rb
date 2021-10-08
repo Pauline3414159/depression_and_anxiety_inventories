@@ -1,8 +1,6 @@
 require 'sinatra'
 require 'tilt'
 require 'erubis'
-require 'sinatra/reloader'
-require 'pry'
 require_relative 'db_tools'
 
 helpers do
