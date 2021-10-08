@@ -4,7 +4,7 @@ require 'bcrypt'
 # allows a connection with the posgresql database
 class PgInterface
   def initialize
-    @connection = PG::Connection.new(dbname: 'burns')
+    @connection = PG::Connection.new(dbname: 'ddpb79umb2p935')
     @user_id_num = nil
   end
 
