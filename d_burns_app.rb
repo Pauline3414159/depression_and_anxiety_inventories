@@ -3,8 +3,6 @@ require 'tilt'
 require 'erubis'
 require_relative 'db_tools'
 
-configure.assets.initialize_on_precompile = false
-
 
 helpers do
   def interpert_depression(score)
