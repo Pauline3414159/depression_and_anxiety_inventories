@@ -4,7 +4,11 @@ require 'bcrypt'
 # allows a connection with the posgresql database
 class PgInterface
   def initialize
-    @connection = PG::Connection.new(dbname: 'burns')
+    @connection = if Sinatra::Base.production?
+      PG.connect(ENV['DATABASE_URL'])
+    else
+      PG.connect(dbname: "burns")
+    end
     @user_id_num = nil
   end
 
